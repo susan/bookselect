@@ -8,12 +8,17 @@ import BookDetail from "../components/BookDetail"
 
 class BookContainer extends Component {
 
+   getBookDetails = (bookObj) =>{
+     console.log(bookObj)
+
+   }
+
   render() {
   	console.log(this.props.books)
     const { books } = this.props
     return (
       <div className="BookContainer">
-      <Grid>
+      {/*<Grid>
        <Grid.Row width={8}>
             <BookList books={books}/>
             </Grid.Row>
@@ -21,6 +26,9 @@ class BookContainer extends Component {
             <BookDetail books={books}/>
             </Grid.Row>
             </Grid>
+         */}
+           <BookList books={books} getBookDetails={this.getBookDetails} />
+           <BookDetail books={books} />
       </div>
     );
   }
