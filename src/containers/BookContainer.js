@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Grid } from "semantic-ui-react";
 import { connect } from 'react-redux';
 
+
 import books from "../data.js"
 import BookList from "../components/BookList"
 import BookDetail from "../components/BookDetail"
