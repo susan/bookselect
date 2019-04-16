@@ -7,11 +7,12 @@ const initialBookState = {
 	selectedBook: null,
 }
 
- export default function BookReducer(state = initialBookState, action){
-   console.log('bookReducer')
-   switch (action.type){
+ export default function bookReducer(state = initialBookState, action){
+   console.log('%c bookReducer', 'color:orange', action)
+   switch(action.type){
    	 case "SELECT_BOOK": {
-     return { ...state, selectedBook: action.payload}
+      //console.log(action.payload)
+     return { ...state, selectedBook: action.payload};
     }
      default:
        return state;
