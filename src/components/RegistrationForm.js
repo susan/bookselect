@@ -20,7 +20,7 @@ class RegistrationForm extends React.Component {
   	e.preventDefault()
   	const user = this.state
   	//console.log(user)
-  	this.props.addUser(user)
+  	this.props.createUser(user)
   }
 
 
@@ -52,7 +52,7 @@ class RegistrationForm extends React.Component {
 const mapDispatchToProps = (dispatch) => {
 console.log("inmapdispatch")
   return {
-	   addUser: (userObj) => dispatch(addUser(userObj))
+	   addUser: (userObj) => dispatch(createUser(userObj))
   }
 }
 
