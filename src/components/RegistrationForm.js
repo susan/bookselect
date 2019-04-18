@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addUser } from '../actions/userAction';
+import { createUser } from '../thunks/userThunks';
 
 class RegistrationForm extends React.Component {
 
@@ -13,7 +13,6 @@ class RegistrationForm extends React.Component {
   	this.setState({
   		[e.target.name]: e.target.value
   	})
-
   }
 
   handleSubmit = (e) => {
@@ -21,26 +20,28 @@ class RegistrationForm extends React.Component {
   	const user = this.state
   	//console.log(user)
   	this.props.createUser(user)
+    this.props.history.push('/books')
+
   }
 
 
 	render(){
-		//console.log(this.props)
+		console.log(this.props)
      return (
         <div>
      	    <form onSubmit= {this.handleSubmit}>
-     	      <input
+            <input
 		     	    type="text"
-		     	    name= "newUserEmail"
-		     	    placeholder = "email"
-		     	    onChange = {this.handleChange}
+		     	    name="newUserEmail"
+		     	    placeholder="email"
+		     	    onChange={this.handleChange}
      	      />
 
            <input
-		     	   type="text"
-		     	   name= "newUserPassword"
-		     	   placeholder = "password"
-		     	   onChange = {this.handleChange}
+		     	   type="password"
+		     	   name="newUserPassword"
+		     	   placeholder="password"
+		     	   onChange={this.handleChange}
      	     />
            <button> Sign up </button>
         </form>
@@ -50,9 +51,9 @@ class RegistrationForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-console.log("inmapdispatch")
+console.log("I'm in mapdispatch")
   return {
-	   addUser: (userObj) => dispatch(createUser(userObj))
+	   createUser: (userObj) => dispatch(createUser(userObj))
   }
 }
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar';
 import RegistrationForm from './components/RegistrationForm';
+import LoginForm from './components/LoginForm';
+
 
 import { Grid } from 'semantic-ui-react';
 import { Route } from 'react-router-dom';
@@ -18,6 +20,7 @@ class App extends Component {
 
       <Route path = '/' component={NavBar} />
       <Route path = '/register' component={RegistrationForm} />
+      <Route path = '/login' component={LoginForm} />
       <Route path = '/books'component={BookContainer} />
       </div>
     );
