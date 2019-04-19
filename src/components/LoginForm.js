@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginUser} from '../thunks/userThunks'
+import { loginUser } from '../thunks/userThunks';
 
 
 class LoginForm extends React.Component {
@@ -10,24 +10,23 @@ class LoginForm extends React.Component {
     loginPassword: '',
   }
 
-   handleChange = (e) =>{
+   handleChange = (e) => {
      this.setState ({
       [e.target.name]: e.target.value
      })
-
    }
 
    handleSubmit = (e) => {
     e.preventDefault()
     const user= this.state
+    //console.log(user)
     this.props.loginUser(user)
     this.props.history.push('/books')
-
    }
 
 
    render () {
-
+     //console.log(this.props)
      return(
        <div>
           <form onSubmit = {this.handleSubmit} >
@@ -54,10 +53,10 @@ class LoginForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-
+   //console.log("I'm in mapdispatch")
    return {
-    loginUser: (userObj) => dispatch => (loginUser(userObj))
+    loginUser: (userObj) => dispatch(loginUser(userObj))
    }
 }
 
-export default connect(null)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);

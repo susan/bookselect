@@ -7,6 +7,8 @@ const NavBar = () => {
      <NavLink className = "nav_item" to="/books"> Books  </NavLink>
      <NavLink className = "nav_item" to="/register"> Sign Up </NavLink>
      <NavLink className = "nav_item" to="/login"> Login </NavLink>
+     <NavLink className = "nav_item" to="/logout"> Logout </NavLink>
+
     </div>
   )
 

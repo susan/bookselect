@@ -1,4 +1,4 @@
-import { addUser } from "../actions/userAction"
+import { addUser, getUser } from "../actions/userAction"
 
 export const createUser = (user) => {
   return function thunk (dispatch) {
@@ -15,15 +15,37 @@ export const createUser = (user) => {
     	 }
      })
     })
-    .then(resp => resp.json)
-    .then(data => dispatch(addUser(data)))
+    .then(resp => resp.json())
+    .then(data => {
+      //console.log(data)
+      dispatch(addUser(data))
+      localStorage.setItem("token", data.jwt)
 
-     //localStorage.setItem("token",data.jwt)
+    })
   }
 }
 
 export const loginUser = (user) => {
+  return function thunk (dispatch) {
+    return fetch(`http://localhost:3000/api/v1/login`, {
+      method: 'POST',
+      headers: {
+         'Content-Type': "application/json",
+         'Accepts': 'application/json'
+      },
+     body: JSON.stringify({
+       user: {
+         email: user.loginEmail,
+         password: user.loginPassword
+       }
+     })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      //console.log(data)
+      dispatch(getUser(data))
+      localStorage.setItem("token", data.jwt)
 
- console.log("im the thunk")
+    })
+  }
 }
-
