@@ -3,11 +3,17 @@ import { Grid } from "semantic-ui-react";
 import { connect } from 'react-redux';
 
 
-import books from "../data.js"
-import BookList from "../components/BookList"
-import BookDetail from "../components/BookDetail"
+import books from "../data.js";
+import { getBooks } from "../thunks/bookThunks";
+import BookList from "../components/BookList";
+import BookDetail from "../components/BookDetail";
 
 class BookContainer extends Component {
+
+  componentDidMount(){
+    this.props.getBooks()
+   }
+
 
    getBookDetails = (bookObj) =>{
      console.log(bookObj)
@@ -15,8 +21,8 @@ class BookContainer extends Component {
    }
 
   render() {
-  	console.log(this.props.books)
-    const { books } = this.props
+
+    const { books } = this.props.books
     return (
       <div className="BookContainer">
       {/*<Grid>
@@ -28,8 +34,8 @@ class BookContainer extends Component {
             </Grid.Row>
             </Grid>
          */}
-           <BookList books={books} getBookDetails={this.getBookDetails} />
-           <BookDetail books={books} />
+           <BookList books={this.props.books} getBookDetails={this.getBookDetails} />
+           <BookDetail books={this.props.books} />
       </div>
     );
   }
@@ -40,4 +46,8 @@ class BookContainer extends Component {
      }
   }
 
-export default connect(mapStateToProps)(BookContainer);
+  const mapDispatchToProps = dispatch => ({
+    getBooks: () => dispatch(getBooks())
+  })
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookContainer);

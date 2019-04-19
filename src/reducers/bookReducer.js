@@ -1,9 +1,9 @@
 
-import books from '../data.js';
+//import books from '../data.js';
 
 
 const initialBookState = {
-	books: books,
+	books: [],
 	selectedBook: null,
 }
 
@@ -14,7 +14,12 @@ const initialBookState = {
       //console.log(action.payload)
      return { ...state, selectedBook: action.payload};
     }
+     case "LOAD_BOOKS": {
+       //console.log(action.payload)
+     return { ...state, books: action.payload};
+    }
+
      default:
        return state;
-   }
- }
+   } //end of switch
+ }//end of export
