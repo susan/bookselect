@@ -21,9 +21,10 @@ class BookDetail extends Component {
             <Card.Meta> {this.props.selectedBook.rank} </Card.Meta>
                <Card.Content>
                <img className = "image" alt="" src= {this.props.selectedBook.book_image} />
-                <p>{this.props.selectedBook.description}</p>
-                <p> {this.props.selectedBook.publisher} </p>
-                <p> {this.props.selectedBook.price} </p>
+                <p> Description: {this.props.selectedBook.description}</p>
+                <p> Author: {this.props.selectedBook.author}</p>
+                <p> Publisher: {this.props.selectedBook.publisher} </p>
+                <p> Price: ${this.props.selectedBook.price} </p>
                 <Icon onClick={this.handleClick} name= "shopping basket" />
                </Card.Content>
           </Card>
