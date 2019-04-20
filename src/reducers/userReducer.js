@@ -4,7 +4,7 @@ const initialUserState = {
 }
 
 export default function userReducer(state = initialUserState, action) {
-  console.log('%c userReducer', 'color:blue', action)
+  //console.log('%c userReducer', 'color:blue', action)
   switch(action.type) {
     case "ADD_USER": {
     	return { ...state, user: action.payload};

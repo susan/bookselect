@@ -1,11 +1,15 @@
 import React, { Component, Fragment} from 'react'
 import { connect } from 'react-redux';
-import { Card } from "semantic-ui-react";
+import { Card, Icon } from "semantic-ui-react";
 import { Link, Switch, Route } from "react-router-dom";
 
 
 class BookDetail extends Component {
 
+  handleClick = () => {
+
+
+  }
 
 
   render() {
@@ -21,6 +25,7 @@ class BookDetail extends Component {
                 <p>{this.props.selectedBook.description}</p>
                 <p> {this.props.selectedBook.publisher} </p>
                 <p> {this.props.selectedBook.price} </p>
+                <Icon onClick={this.handleClick} name= "shopping basket" />
                </Card.Content>
           </Card>
         }

@@ -7,6 +7,7 @@ import books from "../data.js";
 import { getBooks } from "../thunks/bookThunks";
 import BookList from "../components/BookList";
 import BookDetail from "../components/BookDetail";
+import Cart from "../components/Cart";
 
 class BookContainer extends Component {
 
@@ -15,10 +16,7 @@ class BookContainer extends Component {
    }
 
 
-   getBookDetails = (bookObj) =>{
-     console.log(bookObj)
 
-   }
 
   render() {
 
@@ -34,8 +32,9 @@ class BookContainer extends Component {
             </Grid.Row>
             </Grid>
          */}
-           <BookList books={this.props.books} getBookDetails={this.getBookDetails} />
+           <BookList books={this.props.books}  />
            <BookDetail books={this.props.books} />
+           <Cart />
       </div>
     );
   }

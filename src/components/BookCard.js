@@ -9,7 +9,7 @@ import { selectBook }  from '../actions/bookAction';
 class BookCard extends Component {
 
   handleClick = () => {
-     return this.props.getBookDetails(this.props.selectedBook(this.props.book))
+     return this.props.selectedBook(this.props.book)
   }
 
   render() {
