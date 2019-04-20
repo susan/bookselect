@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid } from "semantic-ui-react";
 import { connect } from 'react-redux';
-
+import { Route } from 'react-router-dom';
 
 //import books from "../data.js";
 import { getBooks } from "../thunks/bookThunks";
@@ -32,7 +32,7 @@ class BookContainer extends Component {
             </Grid.Row>
             </Grid>
          */}
-           <BookList books={this.props.books}  />
+           <Route exact path= "/books" render={(routerProps) => <BookList books={this.props.books}/> } />
            <BookDetail books={this.props.books} />
            <Cart />
       </div>
