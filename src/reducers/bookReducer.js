@@ -16,6 +16,12 @@ const initialBookState = {
        //console.log(action.payload)
      return { ...state, books: action.payload};
     }
+    case "LOAD_PRICE": {
+      //console.log(action.payload)
+      let price = (action.payload)
+      let newBookInfo ={...state.selectedBook, price}
+      return{...state, selectedBook: newBookInfo};
+    }
 
      default:
        return state;

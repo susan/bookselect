@@ -3,7 +3,7 @@ import { Grid } from "semantic-ui-react";
 import { connect } from 'react-redux';
 
 
-import books from "../data.js";
+//import books from "../data.js";
 import { getBooks } from "../thunks/bookThunks";
 import BookList from "../components/BookList";
 import BookDetail from "../components/BookDetail";

@@ -6,7 +6,7 @@ class Cart extends Component {
 
 	render() {
     const cartItems = this.props.carts.map((item, index)=> {
-     return <List.Item key={index}>{item.title} price: `${item.price}`</List.Item>
+     return <List.Item key={index}>{item.title} price: ${item.price}</List.Item>
     })
 		return (
      <div>

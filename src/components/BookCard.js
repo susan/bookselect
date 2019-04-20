@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Card, Icon } from 'semantic-ui-react';
 
 import { selectBook }  from '../actions/bookAction';
-
+import { getPriceFromGoogle }  from '../thunks/bookThunks';
 
 
 class BookCard extends Component {
 
   handleClick = () => {
-     return this.props.selectedBook(this.props.book)
+     this.props.selectedBook(this.props.book)
+     this.props.bookPrice(this.props.book)
   }
 
   render() {
@@ -31,9 +32,12 @@ class BookCard extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-        selectedBook: (book) => dispatch(selectBook(book))
-     })
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectedBook: (book) => dispatch(selectBook(book)),
+    bookPrice: (book) => dispatch(getPriceFromGoogle(book))
+  }
+}
 
 
 export default connect(null, mapDispatchToProps)(BookCard);
