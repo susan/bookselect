@@ -2,13 +2,12 @@ import React, { Component, Fragment} from 'react'
 import { connect } from 'react-redux';
 import { Card, Icon } from "semantic-ui-react";
 import { Link, Switch, Route } from "react-router-dom";
-
+import { addCartItem }  from '../actions/cartAction';
 
 class BookDetail extends Component {
 
   handleClick = () => {
-
-
+    return this.props.addCartItem(this.props.selectedBook)
   }
 
 
@@ -40,4 +39,8 @@ const mapStateToProps = (state) => {
      }
   }
 
-export default connect(mapStateToProps)(BookDetail);
+const mapDispatchToProps = (dispatch) => ({
+        addCartItem: (book) => dispatch(addCartItem(book))
+     })
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookDetail);
