@@ -1,4 +1,5 @@
 import { loadBooks, loadPriceFromGoogle } from "../actions/bookAction"
+import { addCartItem } from '../actions/cartAction';
 
 export const getBooks = () => {
   //console.log("in the books")
@@ -22,5 +23,35 @@ export const getPriceFromGoogle = (book) => {
      const pageCount =(data.items[0].volumeInfo.pageCount)
 		dispatch(loadPriceFromGoogle(pageCount))
 	})
+  }
+}
+
+export const createBook = (book) => {
+  return function thunk (dispatch) {
+    return fetch(`http://localhost:3000/api/v1/books`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify ({
+        book: {
+          title: book.title,
+          publisher: book.publisher,
+          rank: book.rank,
+          price: book.price,
+          ISBN_13: book.primary_isbn13,
+          author: book.author,
+          image: book.book_image,
+          description: book.description
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    	console.log(data.book)
+    	dispatch(addCartItem(data.book))
+    })
   }
 }

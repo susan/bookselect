@@ -2,12 +2,14 @@ import React, { Component, Fragment} from 'react'
 import { connect } from 'react-redux';
 import { Card, Icon, Grid, Header } from "semantic-ui-react";
 import { Link, Switch, Route } from "react-router-dom";
-import { addCartItem }  from '../actions/cartAction';
+//import { addCartItem } from '../actions/cartAction';
+import { createBook } from '../thunks/bookThunks'
 
 class BookDetail extends Component {
 
   handleClick = () => {
-    return this.props.addCartItem(this.props.selectedBook)
+    //this.props.addCartItem(this.props.selectedBook)
+    this.props.createBook(this.props.selectedBook)
   }
 
 
@@ -45,7 +47,8 @@ const mapStateToProps = (state) => {
   }
 
 const mapDispatchToProps = (dispatch) => ({
-        addCartItem: (book) => dispatch(addCartItem(book))
+        //addCartItem: (book) => dispatch(addCartItem(book)),
+        createBook: (book) => dispatch(createBook(book))
      })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookDetail);
