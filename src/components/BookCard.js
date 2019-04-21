@@ -28,9 +28,9 @@ class BookCard extends Component {
              <Icon color="green" onClick = {() => {
                return (
                 <div>
-                  { history.push(`books/${this.props.book.rank}`) }
-                    this.props.selectedBook(this.props.book)
-                    this.props.bookPrice(this.props.book)
+                    {this.props.selectedBook(this.props.book)}
+                    {this.props.bookPrice(this.props.book)}
+                    { history.push(`books/${this.props.book.rank}`) }
                  </div>
                 )
              }}

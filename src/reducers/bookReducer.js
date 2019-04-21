@@ -18,9 +18,17 @@ const initialBookState = {
     }
     case "LOAD_PRICE": {
       //console.log(action.payload)
-      let price = (action.payload)
-      let newBookInfo ={...state.selectedBook, price}
-      return{...state, selectedBook: newBookInfo};
+      const price = (action.payload)
+      const newBookInfo ={...state.selectedBook, price}
+      console.log(newBookInfo)
+      console.log(state.books)
+      const newBooks = state.books.map(book => {
+        if (book.title === newBookInfo.title){
+          return newBookInfo
+        }
+        return book
+      })
+      return{...state, books: newBooks};
     }
 
      default:
