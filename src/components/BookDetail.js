@@ -9,6 +9,7 @@ class BookDetail extends Component {
 
   handleClick = () => {
     //this.props.addCartItem(this.props.selectedBook)
+    console.log(this.props.selectedBook)
     this.props.createBook(this.props.selectedBook)
   }
 

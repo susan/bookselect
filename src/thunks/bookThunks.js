@@ -27,6 +27,7 @@ export const getPriceFromGoogle = (book) => {
 }
 
 export const createBook = (book) => {
+	console.log("thunkbook", book)
   return function thunk (dispatch) {
     return fetch(`http://localhost:3000/api/v1/books`, {
       method: 'POST',

@@ -1,4 +1,5 @@
 import { addUser, getUser } from "../actions/userAction"
+import { getCartItems } from "../actions/cartAction"
 
 export const createUser = (user) => {
   return function thunk (dispatch) {
@@ -42,8 +43,9 @@ export const loginUser = (user) => {
     })
     .then(resp => resp.json())
     .then(data => {
-      //console.log(data)
-      dispatch(getUser(data))
+      console.log(data)
+      dispatch(getUser(data.user))
+      dispatch(getCartItems(data.cart_items))
       localStorage.setItem("token", data.jwt)
 
     })
