@@ -13,14 +13,14 @@ export const getBooks = () => {
 }
 
 export const getPriceFromGoogle = (book) => {
-	const isbn = parseInt(book.isbns[0].isbn13)
-  console.log("in the google books")
+	const isbn = parseInt(book.primary_isbn13)
+  console.log(isbn)
   return function thunk (dispatch) {
-    return fetch("https://www.googleapis.com/books/v1/volumes?q=isbn: ${isbn}&&maxResults=1&key=AIzaSyC1WvZbjHAPtzBuQ3U22qz4Fok3F1OiDo8")
+    return fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn: ${isbn}&key=AIzaSyC1WvZbjHAPtzBuQ3U22qz4Fok3F1OiDo8`)
   .then(resp => resp.json())
 	.then(data => {
-     console.log(data.totalItems)
-		dispatch(loadPriceFromGoogle(data.totalItems))
+     const pageCount =(data.items[0].volumeInfo.pageCount)
+		dispatch(loadPriceFromGoogle(pageCount))
 	})
   }
 }

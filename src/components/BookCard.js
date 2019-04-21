@@ -9,6 +9,7 @@ import { getPriceFromGoogle }  from '../thunks/bookThunks';
 class BookCard extends Component {
 
   handleClick = () => {
+     console.log(this.props.book)
      this.props.selectedBook(this.props.book)
      this.props.bookPrice(this.props.book)
   }

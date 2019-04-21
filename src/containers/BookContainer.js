@@ -33,7 +33,7 @@ class BookContainer extends Component {
             </Grid>
          */}
            <Route exact path= "/books" render={(routerProps) => <BookList books={this.props.books}/> } />
-           <BookDetail books={this.props.books} />
+           <BookDetail />
            <Cart />
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component, Fragment} from 'react'
 import { connect } from 'react-redux';
-import { Card, Icon } from "semantic-ui-react";
+import { Card, Icon, Grid, Header } from "semantic-ui-react";
 import { Link, Switch, Route } from "react-router-dom";
 import { addCartItem }  from '../actions/cartAction';
 
@@ -16,18 +16,22 @@ class BookDetail extends Component {
       <div>
         {this.props.selectedBook
         &&
-        <Card>
-          {/*<Card.Header size="large"> i am title (header)</Card.Header> */}
-            <Card.Meta> {this.props.selectedBook.rank} </Card.Meta>
-               <Card.Content>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={1}></Grid.Column>
+             <Grid.Column width={2}>
                <img className = "image" alt="" src= {this.props.selectedBook.book_image} />
+             </Grid.Column>
+             <Grid.Column width={4}>
+                <Header size="large"> {this.props.selectedBook.title} </Header>
                 <p> Description: {this.props.selectedBook.description}</p>
                 <p> Author: {this.props.selectedBook.author}</p>
                 <p> Publisher: {this.props.selectedBook.publisher} </p>
                 <p> Price: ${this.props.selectedBook.price} </p>
-                <Icon onClick={this.handleClick} name= "shopping basket" />
-               </Card.Content>
-          </Card>
+                <Icon color="purple" onClick={this.handleClick} name= "shopping basket" />
+               </Grid.Column>
+            </Grid.Row>
+          </Grid>
         }
       </div>
     )

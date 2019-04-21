@@ -6,14 +6,14 @@ class Cart extends Component {
 
 	render() {
     const cartItems = this.props.carts.map((item, index)=> {
-     return <List.Item key={index}>{item.title} price: ${item.price}</List.Item>
+     return <li key={index}>{item.title} price: ${item.price}</li>
     })
 		return (
      <div>
        <Header size="medium"> Cart </Header>
-         <List>
+         <ul>
            {cartItems}
-         </List>
+         </ul>
        </div>
 		)
 	}
