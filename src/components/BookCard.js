@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Icon } from 'semantic-ui-react';
-
+import { Route } from "react-router-dom";
 import { selectBook }  from '../actions/bookAction';
 import { getPriceFromGoogle }  from '../thunks/bookThunks';
 
 
 class BookCard extends Component {
 
-  handleClick = () => {
-     this.props.selectedBook(this.props.book)
-     this.props.bookPrice(this.props.book)
-  }
+  // handleClick = () => {
+  //    this.props.selectedBook(this.props.book)
+  //    this.props.bookPrice(this.props.book)
+  // }
 
   render() {
        const { rank, book_image } = this.props.book
@@ -24,7 +24,18 @@ class BookCard extends Component {
                <Card.Description> </Card.Description>
           </Card.Content>
           <Card.Content extra >
-             <Icon color="green" onClick = {this.handleClick} name="info"/>
+             <Route render={({history}) => (
+             <Icon color="green" onClick = {() => {
+               return (
+                <div>
+                  { history.push(`books/${this.props.book.rank}`) }
+                    this.props.selectedBook(this.props.book)
+                    this.props.bookPrice(this.props.book)
+                 </div>
+                )
+             }}
+             name="info"/>
+            )} />
           </Card.Content>
         </Card>
       </div>
