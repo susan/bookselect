@@ -5,7 +5,7 @@ import LoginForm from './components/LoginForm';
 import LogoutForm from './components/LogoutForm';
 
 import { Grid } from 'semantic-ui-react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 

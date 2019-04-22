@@ -3,7 +3,7 @@ const initialCartState = {
 }
 
 export default function cartReducer(state = initialCartState, action){
-   console.log('%c cartReducer', 'color:pink', action)
+   //console.log('%c cartReducer', 'color:pink', action)
 
    switch(action.type) {
 
@@ -11,6 +11,13 @@ export default function cartReducer(state = initialCartState, action){
    	   let newCartItem = action.payload
        let newArray= [...state.carts, newCartItem]
        return {...state, carts: newArray}
+
+      case "CLEAR_CART":
+        return{...state, carts: []}
+
+      case "GET_CART_ITEMS":
+        console.log(action.payload)
+         return{...state, carts: action.payload}
 
      default:
       return state;

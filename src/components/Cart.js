@@ -10,7 +10,7 @@ class Cart extends Component {
     })
 		return (
      <div>
-     <a class="ui purple label" >Cart</a>
+     <a className="ui purple label" >Cart</a>
        <Header size="medium"> Cart Items</Header>
          <List size = {'large'}>
            {cartItems}

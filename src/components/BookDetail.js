@@ -25,7 +25,7 @@ class BookDetail extends Component {
              </Grid.Column>
              <Grid.Column width={6}>
                <Header size="large"> Title: {this.props.book.title}</Header>
-                <p> <a class="ui teal horizontal label">Description</a>: {this.props.book.description}</p>
+                <p> <a className="ui teal horizontal label">Description</a>: {this.props.book.description}</p>
                 <p> Author: {this.props.book.author}</p>
                 <p> Publisher: {this.props.book.publisher} </p>
                 <p> Price: ${this.props.book.price} </p>
