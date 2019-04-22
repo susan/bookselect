@@ -5,6 +5,13 @@ export const addCartItem = (book) => {
 	}
 }
 
+export const getCart = (carts) => {
+	return {
+		type: "GET_CART",
+    payload: carts
+	}
+}
+
 
 export const clearCart = (carts) => {
 	return {

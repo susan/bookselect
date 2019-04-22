@@ -5,18 +5,22 @@ import { connect } from 'react-redux';
 class Cart extends Component {
 
 	render() {
+
     const cartItems = this.props.carts.map((item, index)=> {
      return <List.Item  key={index}> <Icon name='book' />Title: {item.title} price: ${item.price}</List.Item>
     })
+
 		return (
      <div>
      <a className="ui purple label" >Cart</a>
        <Header size="medium"> Cart Items</Header>
          <List size = {'large'}>
-           {cartItems}
+          {cartItems ? cartItems : null}
          </List>
+
        </div>
-		)
+		 )
+
 	}
 };
 
