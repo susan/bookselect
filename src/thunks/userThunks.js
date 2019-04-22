@@ -1,5 +1,6 @@
 import { addUser, getUser } from "../actions/userAction"
-import { getCartItems } from "../actions/cartAction"
+import { getCartItems, addCartItem } from "../actions/cartAction"
+
 
 export const createUser = (user) => {
   return function thunk (dispatch) {
