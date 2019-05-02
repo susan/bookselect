@@ -51,7 +51,7 @@ class RegistrationForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-console.log("I'm in mapdispatch")
+//console.log("I'm in mapdispatch")
   return {
 	   createUser: (userObj) => dispatch(createUser(userObj))
   }

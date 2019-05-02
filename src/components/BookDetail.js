@@ -8,7 +8,7 @@ import { createBook } from '../thunks/bookThunks'
 class BookDetail extends Component {
 
   handleClick = () => {
-    return this.props.createBook(this.props.book)
+      return this.props.createBook(this.props.book)
   }
 
 
@@ -30,7 +30,12 @@ class BookDetail extends Component {
                 <p> Author: {this.props.book.author}</p>
                 <p> Publisher: {this.props.book.publisher} </p>
                 <p> Price: ${this.props.book.price} </p>
+                { localStorage.getItem("token")
+                  ?
                 <Icon color="teal" onClick={this.handleClick} name= "shopping cart" />
+                :
+                <Link to="/login"> Login to Add to Cart </Link>
+                }
                </Grid.Column>
           </Grid.Row>
           </Grid>

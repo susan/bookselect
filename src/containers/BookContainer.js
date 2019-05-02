@@ -19,7 +19,7 @@ class BookContainer extends Component {
 
 
   render() {
-
+    console.log(this.props)
     return (
       <div className="BookContainer">
       {/*<Grid>
@@ -37,11 +37,9 @@ class BookContainer extends Component {
              console.log(rank)
 
                if (this.props.books.length > 0) {
-                 //console.log(this.props.books[0].rank)
                  const book = this.props.books.find(book=> {
                   return book.rank === rank
                   })
-                 console.log(book)
                  return <BookDetail book={book}/>
                 } else {
                   return null

@@ -12,6 +12,9 @@ export default function cartReducer(state = initialCartState, action){
        let newArray= [...state.carts, newCartItem]
        return {...state, carts: newArray}
 
+     case "GET_CART":
+        return {...state, ...state.carts}
+
       case "CLEAR_CART":
         return{...state, carts: []}
 
