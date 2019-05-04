@@ -19,7 +19,7 @@ class BookContainer extends Component {
 
 
   render() {
-
+    //console.log(this.props)
     return (
       <div className="BookContainer">
       {/*<Grid>
@@ -34,14 +34,12 @@ class BookContainer extends Component {
            <Route exact path= "/books" render={(routerProps) => <BookList books={this.props.books}/> } />
            <Route path ="/books/:rank" render={(routerProps)=> {
              const rank= parseInt(routerProps.match.params.rank)
-             console.log(rank)
+             //console.log(rank)
 
                if (this.props.books.length > 0) {
-                 //console.log(this.props.books[0].rank)
                  const book = this.props.books.find(book=> {
                   return book.rank === rank
                   })
-                 console.log(book)
                  return <BookDetail book={book}/>
                 } else {
                   return null

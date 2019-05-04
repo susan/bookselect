@@ -20,7 +20,6 @@ class App extends Component {
       <Route path = '/' component={NavBar} />
       <Route path = '/register' component={RegistrationForm} />
       <Route path = '/login' component={LoginForm} />
-      <Route path = '/logout' component={LogoutForm} />
       <Route path = '/books'component={BookContainer} />
       </div>
     );

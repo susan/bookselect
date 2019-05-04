@@ -17,7 +17,7 @@ class BookCard extends Component {
        const { rank, book_image } = this.props.book
   	return (
       <div>
-      <Card>
+      <Card >
         <Card.Content>
           <Card.Header> <img className = "image" alt="" src={book_image} /> </Card.Header>
             <Card.Meta> Rank: {rank} </Card.Meta>

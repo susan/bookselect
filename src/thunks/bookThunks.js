@@ -1,5 +1,5 @@
 import { loadBooks, loadPriceFromGoogle } from "../actions/bookAction"
-import { addCartItem } from "../actions/cartAction"
+import { addCartItem, addLineItem } from "../actions/cartAction"
 
 
 export const getBooks = () => {
@@ -53,8 +53,9 @@ export const createBook = (book) => {
     })
     .then(resp => resp.json())
     .then(data => {
-    	console.log(data.book)
+    	console.log(data.line_item)
     	dispatch(addCartItem(data.book))
+      dispatch(addLineItem(data.line_item))
     })
   }
 }
