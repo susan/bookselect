@@ -1,5 +1,5 @@
 import { addUser, getUser } from "../actions/userAction"
-import { getCartItems, getCart } from "../actions/cartAction"
+import { getCartItems, getCart, getCartLineItems } from "../actions/cartAction"
 
 
 export const createUser = (user) => {
@@ -23,7 +23,6 @@ export const createUser = (user) => {
       dispatch(addUser(data))
       dispatch(getCart(data.carts))
       localStorage.setItem("token", data.jwt)
-
     })
   }
 }
@@ -45,9 +44,10 @@ export const loginUser = (user) => {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
+      console.log(data.line_items)
       dispatch(getUser(data))
       dispatch(getCartItems(data.cart_items))
+      dispatch(getCartLineItems(data.line_items))
       localStorage.setItem("token", data.jwt)
 
     })

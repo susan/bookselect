@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
      //console.log(this.props)
      return(
        <div>
-          <form onSubmit = {this.handleSubmit} >
+         <form onSubmit = {this.handleSubmit} >
           <input
            type="text"
            name="loginEmail"
