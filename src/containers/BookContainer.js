@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 //import books from "../data.js";
-import { getBooks } from "../thunks/bookThunks";
+import { getBooks } from "../actions/bookAction";
 import BookList from "../components/BookList";
 import BookDetail from "../components/BookDetail";
 import Cart from "../components/Cart";
@@ -13,13 +13,11 @@ class BookContainer extends Component {
 
   componentDidMount(){
     this.props.getBooks()
-   }
-
-
-
+  }
 
   render() {
     //console.log(this.props)
+    //
     return (
       <div className="BookContainer">
       {/*<Grid>
