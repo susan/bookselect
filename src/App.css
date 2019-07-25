@@ -47,7 +47,22 @@
     padding-bottom: 5px;
     padding-left: 5px;
     text-decoration: none;
+  }
 
+  /*.nav{
+  display: grid;
+  grid_template-columns: repeat(5, 100px);
 
   }
+
+  .card-container{
+  display: grid;
+  .grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap-columns: 20px;
+}
+make a class for booklist as the container
+
+  */
 

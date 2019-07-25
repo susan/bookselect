@@ -32,7 +32,7 @@ class BookDetail extends Component {
                 <p> Price: ${this.props.book.price} </p>
                 { localStorage.getItem("token")
                   ?
-                <Icon color="teal" onClick={this.handleClick} name= "shopping cart" />
+                <Icon color="teal" onClick={this.handleClick} name= "shopping cart icon" />
                 :
                 <Link to="/login"> Login to Add to Cart </Link>
                 }
