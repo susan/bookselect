@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+
+import createSagaMiddleware from 'redux-saga';
+import rootSaga  from './saga.js';
+
+import { loadBooks } from './actions/bookAction';
 import { Provider } from 'react-redux';
 import reducer from './reducers'
 import './index.css';
@@ -11,11 +16,13 @@ import * as serviceWorker from './serviceWorker'
 import "semantic-ui-css/semantic.min.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer,composeEnhancers(applyMiddleware(thunk)));
+const sagaMiddleware = createSagaMiddleware()
+const middleware = [thunk, sagaMiddleware]
 
+const store = createStore(reducer,composeEnhancers(applyMiddleware(...middleware)));
 
-
-
+sagaMiddleware.run(rootSaga)
+  //store.dispatch(loadBooks())
 
 ReactDOM.render(
 	<Provider store = {store}>

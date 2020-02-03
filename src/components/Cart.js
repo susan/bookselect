@@ -10,11 +10,11 @@ class Cart extends Component {
    // handleDelete = (event,id) => {
    //  console.log(id)
    //   return this.props.deleteCartItem(id)
-   //}
-
+   //}console.log("props are", this.props)
 	render() {
-    //console.log(this.props.user.user)
+
     const cartItems = this.props.carts.map((item, index)=> {
+
       return <List.Item  key={index}>
             Title: {item.title} price: ${item.price} <Icon color='yellow'
             name='trash alternate outline'
@@ -22,6 +22,7 @@ class Cart extends Component {
               let selectLineItem = this.props.lineItems.find(selection => {
                return selection.book_id === item.id
               })
+              console.log('selected', selectLineItem)
                this.props.deleteCartItem(selectLineItem)}
              }
             />
@@ -54,7 +55,7 @@ const mapStateToProps = (state) => {
   }
 
   const mapDispatchToProps = (dispatch) => ({
-    deleteCartItem: (id, user) => dispatch(deleteCartItem(id))
+    deleteCartItem: (book) => dispatch(deleteCartItem(book))
 })
 
 

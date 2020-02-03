@@ -1,4 +1,6 @@
 
+
+
 const initialBookState = {
 	books: [],
 	selectedBook: null,
@@ -12,10 +14,15 @@ const initialBookState = {
       //console.log(action.payload)
      return { ...state, selectedBook: action.payload};
     }
-     case "LOAD_BOOKS": {
-       //console.log(action.payload)
-     return { ...state, books: action.payload};
+     case "GET_BOOKS": {
+     return { ...state, loading: true };
     }
+
+     case "LOAD_BOOKS":{
+      console.log(action.payload)
+      return {...state, books: action.payload }
+     }
+
     case "LOAD_PRICE": {
       //console.log(action.payload)
       const price = (action.payload)
