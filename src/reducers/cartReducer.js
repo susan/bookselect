@@ -15,9 +15,10 @@ export default function cartReducer(state = initialCartState, action){
 
      case "REMOVE_CART_ITEM": {
        let book = action.payload
-         return {...state, carts: state.carts.filter(bookObj =>
-            bookObj.id !== book.id
-         )}
+       let foundIndex = state.carts.findIndex(i => i.title ===book.title)
+       let newArray = [...state.carts.slice(0,foundIndex),
+          ...state.carts.slice(foundIndex+1)]
+         return {...state, carts: newArray}
       }
 
      case "GET_CART":
