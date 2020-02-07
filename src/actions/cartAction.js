@@ -6,10 +6,10 @@ export const addCartItem = (book) => {
 	}
 }
 
-export const removeCartItem = (book) => {
+export const removeCartItem = (lineItem) => {
   return {
     type: "REMOVE_CART_ITEM",
-    payload: book
+    payload: lineItem
   }
 }
 
