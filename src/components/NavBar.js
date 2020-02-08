@@ -6,13 +6,13 @@ import { clearCart } from "../actions/cartAction";
 
 class NavBar extends Component {
   logout = () => {
-    // remove user from local storage to log user out
     localStorage.removeItem("token");
-    this.props.logoutUser(this.props.user);
+    this.props.logoutUser();
     this.props.clearCart(this.props.carts);
   };
 
   render() {
+    const { user } = this.props;
     return (
       <div className="nav">
         <NavLink className="nav_item" to="/books">
@@ -21,7 +21,7 @@ class NavBar extends Component {
         <NavLink className="nav_item" to="/register">
           Sign Up
         </NavLink>
-        {!localStorage.length ? (
+        {!user ? (
           <NavLink className="nav_item" to="/login">
             Login
           </NavLink>
@@ -40,12 +40,12 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user.user
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    logoutUser: user => dispatch(logoutUser(user)),
+    logoutUser: () => dispatch(logoutUser()),
     clearCart: carts => dispatch(clearCart(carts))
   };
 };

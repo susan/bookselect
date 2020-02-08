@@ -5,8 +5,7 @@ import { deleteCartItem } from "../thunks/cartThunks";
 
 class Cart extends Component {
   render() {
-    const { lineItems, carts = [] } = this.props;
-
+    const { lineItems, carts } = this.props;
     const cartItems = carts.map((item, index) => {
       return (
         <List.Item key={index}>
@@ -24,12 +23,11 @@ class Cart extends Component {
         </List.Item>
       );
     });
-
     return (
       <div>
         <a className="ui purple label">Cart</a>
         <Header size="medium"> Cart Items</Header>
-        <List size={"large"}>{cartItems ? cartItems : null}</List>
+        <List size={"large"}>{cartItems.length ? cartItems : null}</List>
       </div>
     );
   }

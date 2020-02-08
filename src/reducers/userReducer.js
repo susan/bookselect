@@ -1,19 +1,18 @@
-
 const initialUserState = {
-   user: {},
-}
+  user: null
+};
 
 export default function userReducer(state = initialUserState, action) {
   //console.log('%c userReducer', 'color:blue', action)
-  switch(action.type) {
+  switch (action.type) {
     case "ADD_USER": {
-    	return { ...state, user: action.payload};
+      return { ...state, user: action.payload };
     }
     case "GET_USER": {
-    	return { ...state, user: action.payload};
+      return { ...state, user: action.payload };
     }
     case "LOGOUT_USER": {
-      return { ...state, user: {} }
+      return { ...state, user: null };
     }
 
     default:

@@ -7,7 +7,12 @@ import { getPriceFromGoogle } from "../thunks/bookThunks";
 
 class BookCard extends Component {
   render() {
-    const { rank, book_image } = this.props.book;
+    const {
+      book,
+      selectedBook,
+      bookPrice,
+      book: { rank, book_image }
+    } = this.props;
     return (
       <div>
         <Card>
@@ -28,9 +33,9 @@ class BookCard extends Component {
                   onClick={() => {
                     return (
                       <div>
-                        {this.props.selectedBook(this.props.book)}
-                        {this.props.bookPrice(this.props.book)}
-                        {history.push(`books/${this.props.book.rank}`)}
+                        {selectedBook(book)}
+                        {bookPrice(book)}
+                        {history.push(`books/${rank}`)}
                       </div>
                     );
                   }}

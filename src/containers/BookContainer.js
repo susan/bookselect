@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-
-//import books from "../data.js";
 import { getBooks } from "../actions/bookAction";
 import BookList from "../components/BookList";
 import BookDetail from "../components/BookDetail";
@@ -16,7 +14,7 @@ class BookContainer extends Component {
   }
 
   render() {
-    const { books } = this.props;
+    const { books, carts } = this.props;
     return (
       <div className="BookContainer">
         <Route
@@ -39,14 +37,15 @@ class BookContainer extends Component {
             }
           }}
         />
-        <Cart />
+        {carts && <Cart />}
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    books: state.book.books
+    books: state.book.books,
+    carts: state.cart.carts
   };
 };
 

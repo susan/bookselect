@@ -11,17 +11,14 @@ class BookDetail extends Component {
   };
 
   render() {
+    //const { book } = this.props;
     const {
-      book_image,
-      title,
-      description,
-      author,
-      publisher,
-      price
-    } = this.props.book;
+      book,
+      book: { book_image, title, description, author, publisher, price }
+    } = this.props;
     return (
       <div>
-        {this.props.book && (
+        {book && (
           <Grid>
             <Grid.Row>
               <Grid.Column width={1}></Grid.Column>

@@ -17,13 +17,11 @@ class RegistrationForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const user = this.state;
-    //console.log(user)
     this.props.createUser(user);
     this.props.history.push("/books");
   };
 
   render() {
-    //console.log(this.props)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -48,7 +46,6 @@ class RegistrationForm extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  //console.log("I'm in mapdispatch")
   return {
     createUser: userObj => dispatch(createUser(userObj))
   };
