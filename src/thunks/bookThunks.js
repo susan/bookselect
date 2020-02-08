@@ -39,6 +39,7 @@ export const createBook = book => {
     })
       .then(resp => resp.json())
       .then(data => {
+        console.log("what am i getting back when create", data);
         dispatch(addCartItem(data.book));
         dispatch(addLineItem(data.line_item));
       });

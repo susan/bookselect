@@ -42,9 +42,10 @@ export const loginUser = user => {
     })
       .then(resp => resp.json())
       .then(data => {
+        console.log("logged in?", data);
         dispatch(getUser(data.user));
-        dispatch(getCartItems(data.cart_items));
         dispatch(getCartLineItems(data.line_items));
+        dispatch(getCartItems(data.cart_items));
         localStorage.setItem("token", data.jwt);
       });
   };

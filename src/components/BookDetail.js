@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Grid, Icon, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-//import { addCartItem }  from '../actions/cartAction';
 import { createBook } from "../thunks/bookThunks";
 
 class BookDetail extends Component {
@@ -59,7 +58,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  //addCartItem: (book) => dispatch(addCartItem(book))
   createBook: book => dispatch(createBook(book))
 });
 

@@ -9,8 +9,9 @@ class Cart extends Component {
     const cartItems = carts.map((item, index) => {
       return (
         <List.Item key={index}>
-          Title: {item.title} price: ${item.price}{" "}
-          <Icon
+          {item.title} price: ${item.price} quantity:
+          {lineItems[index].quantity}
+          {/* <Icon
             color="yellow"
             className="trash alternate outline"
             onClick={() => {
@@ -19,7 +20,7 @@ class Cart extends Component {
               });
               this.props.deleteCartItem(selectLineItem);
             }}
-          />
+          /> */}
         </List.Item>
       );
     });

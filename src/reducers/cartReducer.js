@@ -9,9 +9,15 @@ export default function cartReducer(state = initialCartState, action) {
   switch (action.type) {
     case "ADD_CART_ITEM":
       let newCartItem = action.payload;
-      let newArray = [...(state.carts || []), newCartItem];
-      return { ...state, carts: newArray };
-
+      const existingCartItem = state.carts.find(
+        item => item.id === newCartItem.id
+      );
+      if (existingCartItem) {
+        return { ...state, ...state.carts };
+      } else {
+        let newArray = [...(state.carts || []), newCartItem];
+        return { ...state, carts: newArray };
+      }
     case "REMOVE_CART_ITEM": {
       let bookId = action.payload;
       let foundIndex = state.carts.findIndex(i => i.id === bookId);
@@ -33,10 +39,15 @@ export default function cartReducer(state = initialCartState, action) {
 
     case "ADD_LINE_ITEM":
       let newLineItem = action.payload;
-
-      let newLineItemArray = [...(state.cartsLineItems || []), newLineItem];
-      return { ...state, cartsLineItems: newLineItemArray };
-
+      const existingLineItem = state.cartsLineItems.find(
+        item => item.id === newLineItem.id
+      );
+      if (existingLineItem) {
+        return { ...state, ...state.cartsLineItems };
+      } else {
+        let newLineItemArray = [...(state.cartsLineItems || []), newLineItem];
+        return { ...state, cartsLineItems: newLineItemArray };
+      }
     case "GET_CART_LINE_ITEMS":
       return { ...state, cartsLineItems: action.payload };
 
