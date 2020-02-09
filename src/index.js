@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import createSagaMiddleware from "redux-saga";
-import rootSaga from "./saga.js";
+//import createSagaMiddleware from "redux-saga";
+//import rootSaga from "./saga.js";
 
 import { Provider } from "react-redux";
 import reducer from "./reducers";
@@ -15,15 +15,15 @@ import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const sagaMiddleware = createSagaMiddleware();
-const middleware = [thunk, sagaMiddleware];
+//const sagaMiddleware = createSagaMiddleware();
+const middleware = [thunk];
 
 const store = createStore(
   reducer,
   composeEnhancers(applyMiddleware(...middleware))
 );
 
-sagaMiddleware.run(rootSaga);
+//sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

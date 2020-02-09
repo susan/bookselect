@@ -1,27 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-import { getBooks } from "../actions/bookAction";
+// import { getBooks } from "../actions/bookAction";
 import BookList from "../components/BookList";
 import BookDetail from "../components/BookDetail";
 import Cart from "../components/Cart";
-import { getCartForReturningUser } from "../thunks/cartThunks";
+// import { getCartForReturningUser } from "../thunks/cartThunks";
 
 class BookContainer extends Component {
-  componentDidMount() {
-    this.props.getBooks();
-    this.props.getCartItemsForUser();
-  }
+  // componentDidMount() {
+  //   this.props.getBooks();
+
+  //   this.props.getCartItemsForUser();
+  // }
 
   render() {
     const { books, carts } = this.props;
     return (
       <div className="BookContainer">
-        <Route
-          exact
-          path="/books"
-          render={routerProps => <BookList books={books} />}
-        />
+        <Route exact path="/books" render={routerProps => <BookList />} />
         <Route
           path="/books/:rank"
           render={routerProps => {
@@ -49,9 +46,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  getBooks: () => dispatch(getBooks()),
-  getCartItemsForUser: () => dispatch(getCartForReturningUser())
-});
+// const mapDispatchToProps = dispatch => ({
+//   getBooks: () => dispatch(getBooks()),
+//   getCartItemsForUser: () => dispatch(getCartForReturningUser())
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookContainer);
+export default connect(mapStateToProps)(BookContainer);
