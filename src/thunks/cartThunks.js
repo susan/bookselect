@@ -29,7 +29,7 @@ export const getCartForReturningUser = () => {
 export const deleteCartItem = lineItem => {
   return function thunk(dispatch) {
     return fetch(`http://localhost:3000/api/v1/line_items/${lineItem.id}`, {
-      method: "DELETE",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Accepts: "application/json",
@@ -43,8 +43,13 @@ export const deleteCartItem = lineItem => {
     })
       .then(resp => resp.json())
       .then(data => {
-        dispatch(removeLineItem(data.id));
-        dispatch(removeCartItem(data.book_id));
+        if (data.books && data.line_items) {
+          dispatch(removeCartItem(data.books));
+          dispatch(removeLineItem(data.line_items));
+        } else {
+          dispatch(removeCartItem(null));
+          dispatch(removeLineItem(null));
+        }
       });
   };
 };

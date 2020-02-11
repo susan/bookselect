@@ -43,9 +43,11 @@ export const loginUser = user => {
       .then(resp => resp.json())
       .then(data => {
         dispatch(getUser(data.user));
-        dispatch(getCartItems(data.cart_items));
         dispatch(getCartLineItems(data.line_items));
-        localStorage.setItem("token", data.jwt);
+        dispatch(getCartItems(data.cart_items));
+        if (!data.message) {
+          localStorage.setItem("token", data.jwt);
+        }
       });
   };
 };

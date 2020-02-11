@@ -6,23 +6,28 @@ import { deleteCartItem } from "../thunks/cartThunks";
 class Cart extends Component {
   render() {
     const { lineItems, carts } = this.props;
-    const cartItems = carts.map((item, index) => {
-      return (
-        <List.Item key={index}>
-          Title: {item.title} price: ${item.price}{" "}
-          <Icon
-            color="yellow"
-            className="trash alternate outline"
-            onClick={() => {
-              let selectLineItem = lineItems.find(selection => {
-                return selection.book_id === item.id;
-              });
-              this.props.deleteCartItem(selectLineItem);
-            }}
-          />
-        </List.Item>
-      );
-    });
+    let cartItems = null;
+    carts.length === 0
+      ? (cartItems = [])
+      : (cartItems = carts.map((item, index) => {
+          return (
+            <List.Item key={`${index}`}>
+              title: {item.title} price: ${item.price} units:
+              {lineItems[index].quantity}
+              <Icon
+                color="yellow"
+                className="trash alternate outline"
+                onClick={() => {
+                  let selectLineItem = lineItems.find(selection => {
+                    return selection.book_id === item.id;
+                  });
+                  this.props.deleteCartItem(selectLineItem);
+                }}
+              />
+            </List.Item>
+          );
+        }));
+
     return (
       <div>
         <a className="ui purple label">Cart</a>

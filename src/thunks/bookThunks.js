@@ -53,8 +53,8 @@ export const createBook = book => {
     })
       .then(resp => resp.json())
       .then(data => {
-        dispatch(addCartItem(data.book));
         dispatch(addLineItem(data.line_item));
+        dispatch(addCartItem(data.book));
       });
   };
 };
