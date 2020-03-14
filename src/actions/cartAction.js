@@ -5,10 +5,10 @@ export const addCartItem = book => {
   };
 };
 
-export const removeCartItem = lineItems => {
+export const removeCartItem = lineItem => {
   return {
     type: "REMOVE_CART_ITEM",
-    payload: lineItems
+    payload: lineItem
   };
 };
 
@@ -47,9 +47,16 @@ export const getCartLineItems = itemArray => {
   };
 };
 
-export const removeLineItem = itemArray => {
+export const updateLineItem = lineItem => {
+  return {
+    type: "UPDATE_LINE_ITEM",
+    payload: lineItem
+  };
+};
+
+export const removeLineItem = lineItem => {
   return {
     type: "REMOVE_LINE_ITEM",
-    payload: itemArray
+    payload: lineItem
   };
 };

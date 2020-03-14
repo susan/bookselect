@@ -7,7 +7,8 @@ class Cart extends Component {
   render() {
     const { lineItems, carts } = this.props;
     let cartItems = null;
-    carts.length &&
+
+    carts.length  &&
       (cartItems = carts.map((item, index) => {
         return (
           <List.Item key={`${index}`}>

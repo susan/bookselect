@@ -1,4 +1,5 @@
 import {
+  updateLineItem,
   removeLineItem,
   removeCartItem,
   getCartItems,
@@ -43,12 +44,12 @@ export const deleteCartItem = lineItem => {
     })
       .then(resp => resp.json())
       .then(data => {
-        if (data.books && data.line_items) {
-          dispatch(removeCartItem(data.books));
-          dispatch(removeLineItem(data.line_items));
-        } else {
-          dispatch(removeCartItem(null));
-          dispatch(removeLineItem(null));
+        if (data.line_item.quantity > 0) {
+          dispatch(updateLineItem(data.line_item));
+        }
+        else if (data.line_item.quantity === 0) {
+          dispatch(removeCartItem(data.book));
+          dispatch(removeLineItem(data.line_item));
         }
       });
   };
