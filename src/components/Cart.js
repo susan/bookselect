@@ -7,32 +7,31 @@ class Cart extends Component {
   render() {
     const { lineItems, carts } = this.props;
     let cartItems = null;
-    carts.length === 0
-      ? (cartItems = [])
-      : (cartItems = carts.map((item, index) => {
-          return (
-            <List.Item key={`${index}`}>
-              title: {item.title} price: ${item.price} units:
-              {lineItems[index].quantity}
-              <Icon
-                color="yellow"
-                className="trash alternate outline"
-                onClick={() => {
-                  let selectLineItem = lineItems.find(selection => {
-                    return selection.book_id === item.id;
-                  });
-                  this.props.deleteCartItem(selectLineItem);
-                }}
-              />
-            </List.Item>
-          );
-        }));
+    carts.length &&
+      (cartItems = carts.map((item, index) => {
+        return (
+          <List.Item key={`${index}`}>
+            title: {item.title} price: ${item.price} units:
+            {lineItems[index].quantity}
+            <Icon
+              color="yellow"
+              className="trash alternate outline"
+              onClick={() => {
+                let selectLineItem = lineItems.find(selection => {
+                  return selection.book_id === item.id;
+                });
+                this.props.deleteCartItem(selectLineItem);
+              }}
+            />
+          </List.Item>
+        );
+      }));
 
     return (
       <div>
         <a className="ui purple label">Cart</a>
         <Header size="medium"> Cart Items</Header>
-        <List size={"large"}>{cartItems.length ? cartItems : null}</List>
+        <List size={"large"}>{cartItems}</List>
       </div>
     );
   }
