@@ -16,13 +16,11 @@ export default function cartReducer(state = initialCartState, action) {
     }
 
     case "REMOVE_CART_ITEM": {
-      const foundItem = state.carts.find(
-        item => item.id === action.payload.id
-      );
-      const newCartsArr = state.carts.filter(item=> {
-        return item.id !==foundItem.id
-       })
-       return { ...state, carts: newCartsArr };
+      const foundItem = state.carts.find(item => item.id === action.payload.id);
+      const newCartsArr = state.carts.filter(item => {
+        return item.id !== foundItem.id;
+      });
+      return { ...state, carts: newCartsArr };
     }
 
     case "GET_CART":
@@ -60,23 +58,22 @@ export default function cartReducer(state = initialCartState, action) {
         item => item.id === action.payload.id
       );
       const newLineItemsArr = state.cartsLineItems.map(item => {
-          return item.id === foundItem.id
-            ? { ...item, quantity: action.payload.quantity }
-            : item;
-        });
+        return item.id === foundItem.id
+          ? { ...item, quantity: action.payload.quantity }
+          : item;
+      });
 
       return { ...state, cartsLineItems: newLineItemsArr };
     }
-
 
     case "REMOVE_LINE_ITEM": {
       const foundItem = state.cartsLineItems.find(
         item => item.id === action.payload.id
       );
-      const newLineItemsArr = state.cartsLineItems.filter(item=> {
-        return item.id !==foundItem.id
-       })
-       return { ...state, cartsLineItems: newLineItemsArr };
+      const newLineItemsArr = state.cartsLineItems.filter(item => {
+        return item.id !== foundItem.id;
+      });
+      return { ...state, cartsLineItems: newLineItemsArr };
     }
 
     default:
