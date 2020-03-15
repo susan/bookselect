@@ -62,7 +62,6 @@ export default function cartReducer(state = initialCartState, action) {
           ? { ...item, quantity: action.payload.quantity }
           : item;
       });
-
       return { ...state, cartsLineItems: newLineItemsArr };
     }
 
